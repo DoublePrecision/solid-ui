@@ -66,7 +66,7 @@ export function ExamplesNav(props: ComponentProps<"div">) {
             href={example().code}
             target="_blank"
             rel="nofollow"
-            class="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
+            class="absolute right-0 top-0 hidden items-center rounded-lg text-sm font-medium md:flex"
           >
             View code
             <IconArrowRight class="ml-1 size-4" />

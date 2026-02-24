@@ -59,7 +59,7 @@ export default function Home() {
       <section class="container py-6">
         <ExamplesNav />
         <div class="hidden md:block [&>div]:p-0">
-          <div class="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+          <div class="overflow-hidden rounded-lg border bg-background shadow-sm">
             <Mail />
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function Navbar() {
   const pathname = () => location.pathname
 
   return (
-    <header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:border-border">
+    <header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 dark:border-border">
       <div class="flex h-14 items-center px-4">
         <MobileNav />
 

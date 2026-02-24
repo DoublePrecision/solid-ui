@@ -28,7 +28,7 @@ export default function NavigationMenuDemo() {
 
           <NavigationMenuContent class="grid w-[90vw] grid-rows-3 gap-3 sm:w-[500px] sm:grid-cols-2 md:w-[500px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] [&>li:first-child]:row-span-3">
             <NavigationMenuLink
-              class="box-border flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline focus:shadow-md"
+              class="box-border flex size-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline focus:shadow-md"
               href="https://solid-ui.com"
             >
               <IconLogo class="size-6" />

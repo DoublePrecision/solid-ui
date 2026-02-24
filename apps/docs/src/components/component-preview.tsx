@@ -44,7 +44,7 @@ const ComponentPreview: Component<ComponentPreviewProps> = (rawProps) => {
     <Show
       when={local.type !== "block"}
       fallback={
-        <div class="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+        <div class="relative aspect-4/2.5 w-full overflow-hidden rounded-md border">
           <div class="absolute inset-0 hidden w-[1600px] bg-background md:block">
             <iframe src={`/blocks/${local.name}`} class="size-full" />
           </div>
@@ -57,13 +57,13 @@ const ComponentPreview: Component<ComponentPreviewProps> = (rawProps) => {
             <TabsList class="w-full justify-start rounded-none border-b bg-transparent p-0">
               <TabsTrigger
                 value="preview"
-                class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[selected]:border-b-primary data-[selected]:text-foreground data-[selected]:shadow-none"
+                class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none ui-selected:border-b-primary ui-selected:text-foreground ui-selected:shadow-none"
               >
                 Preview
               </TabsTrigger>
               <TabsTrigger
                 value="code"
-                class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[selected]:border-b-primary data-[selected]:text-foreground data-[selected]:shadow-none"
+                class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none ui-selected:border-b-primary ui-selected:text-foreground ui-selected:shadow-none"
               >
                 Code
               </TabsTrigger>

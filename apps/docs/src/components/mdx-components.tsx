@@ -68,7 +68,7 @@ export const MDXComponents = {
     )
   },
   p: (props: ComponentProps<"p">) => {
-    return <p class="break-words leading-7 [&:not(:first-child)]:mt-6" {...props} />
+    return <p class="wrap-break-word leading-7 not-first:mt-6" {...props} />
   },
   ul: (props: ComponentProps<"ul">) => {
     return <ul class="my-6 ml-6 list-disc" {...props} />
@@ -124,7 +124,7 @@ export const MDXComponents = {
   ),
   TabsTrigger: (props: ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
-      class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[selected]:border-b-primary data-[selected]:text-foreground data-[selected]:shadow-none"
+      class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none ui-selected:border-b-primary ui-selected:text-foreground ui-selected:shadow-none"
       {...props}
     />
   ),
@@ -136,7 +136,7 @@ export const MDXComponents = {
   ),
   LinkedCard: (props: ComponentProps<"a">) => (
     <a
-      class="flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10"
+      class="flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow-sm transition-colors hover:bg-muted/50 sm:p-10"
       {...props}
     />
   ),

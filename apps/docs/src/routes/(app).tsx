@@ -10,7 +10,7 @@ export default function DocsLayout(props: ParentProps) {
   return (
     <MDXProvider components={MDXComponents}>
       <div data-wrapper="" class="border-border/40 dark:border-border">
-        <div class="mx-auto w-full border-border/40 min-[1800px]:max-w-screen-2xl min-[1800px]:border-x dark:border-border">
+        <div class="mx-auto w-full border-border/40 min-[1800px]:max-w-(--breakpoint-2xl) min-[1800px]:border-x dark:border-border">
           <Navbar />
           <div class="flex-1">
             <Suspense>{props.children}</Suspense>

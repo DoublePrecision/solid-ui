@@ -31,7 +31,7 @@ export function TableColumnHeader<TData, TValue>(props: TableColumnHeaderProps<T
             as={Button<"button">}
             variant="ghost"
             size="sm"
-            class="-ml-3 h-8 data-[expanded]:bg-accent"
+            class="-ml-3 h-8 ui-expanded:bg-accent"
           >
             <span>{props.title}</span>
             <Switch fallback={<IconSelector />}>

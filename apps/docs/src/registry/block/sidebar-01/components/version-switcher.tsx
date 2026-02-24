@@ -18,7 +18,7 @@ export function VersionSwitcher(props: { versions: string[]; defaultVersion: str
           <DropdownMenuTrigger
             as={SidebarMenuButton}
             size="lg"
-            class="data-[expanded]:bg-sidebar-accent data-[expanded]:text-sidebar-accent-foreground"
+            class="ui-expanded:bg-sidebar-accent ui-expanded:text-sidebar-accent-foreground"
           >
             <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <IconFile class="size-4" />
@@ -29,7 +29,7 @@ export function VersionSwitcher(props: { versions: string[]; defaultVersion: str
             </div>
             <IconSelector class="ml-auto" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-[--kb-popper-anchor-width]">
+          <DropdownMenuContent class="w-(--kb-popper-anchor-width)">
             <For each={props.versions}>
               {(version) => (
                 <DropdownMenuItem onSelect={() => setSelectedVersion(version)}>

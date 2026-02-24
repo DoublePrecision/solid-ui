@@ -73,14 +73,14 @@ export function BlockDisplay(props: { name: string }) {
             <ResizablePanel
               initialSize={1}
               minSize={0.3}
-              class="relative aspect-[4/2.5] overflow-hidden rounded-xl border bg-background md:aspect-auto"
+              class="relative aspect-4/2.5 overflow-hidden rounded-xl border bg-background md:aspect-auto"
             >
               <iframe
                 src={`/blocks/${item().name}`}
                 class="relative z-20 hidden h-[800px] w-full bg-background md:block"
               />
             </ResizablePanel>
-            <ResizableHandle class="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-x-px after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all after:hover:h-10 md:block" />
+            <ResizableHandle class="relative hidden w-3 bg-transparent p-0 after:absolute after:right-0 after:top-1/2 after:h-8 after:w-[6px] after:-translate-x-px after:-translate-y-1/2 after:rounded-full after:bg-border after:transition-all hover:after:h-10 md:block" />
             <ResizablePanel initialSize={0} class="overflow-hidden" />
           </Resizable>
         </div>
