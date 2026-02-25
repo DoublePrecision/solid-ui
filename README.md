@@ -7,6 +7,8 @@
 
 This is an unofficial port of [shadcn/ui](https://github.com/shadcn-ui/ui) & [tremor-raw](https://github.com/tremorlabs/tremor-raw) to [Solid](https://www.solidjs.com/).
 
+> This is a fork of solid-ui to allow usage with tailwindv4
+
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
 
 ![hero](apps/docs/public/og.png)
