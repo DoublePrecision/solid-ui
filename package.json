@@ -17,7 +17,7 @@
     "lint": "turbo lint",
     "build": "turbo build",
     "build:docs": "turbo --filter=docs build",
-    "build:cli": "turbo --filter=solidui-cli build",
+    "build:cli": "turbo --filter=@doubleprecision/solidui-cli build",
     "build:registry": "turbo --filter=docs build:registry",
     "release": "changeset version",
     "pub:beta": "cd packages/cli && bun pub:beta",

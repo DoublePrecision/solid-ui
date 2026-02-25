@@ -1,5 +1,5 @@
 {
-  "name": "solidui-cli",
+  "name": "@doubleprecision/solidui-cli",
   "version": "0.7.2",
   "description": "Add Solid UI Components to your application using the Solid-UI CLI tool",
   "publishConfig": {
@@ -23,7 +23,9 @@
     "dist"
   ],
   "exports": "./dist/index.js",
-  "bin": "./dist/index.js",
+  "bin": {
+    "solidui-cli": "./dist/index.js"
+  },
   "keywords": [
     "components",
     "ui",
