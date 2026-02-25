@@ -11,7 +11,6 @@ import type { RawConfig } from "~/utils/config"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_CSS_FILE,
-  DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_PREFIX,
   DEFAULT_UTILS,
   RawConfigSchema,
@@ -52,19 +51,21 @@ export const init = new Command()
       const rawConfig = await promptForConfig()
 
       const spinner = p.spinner()
-      spinner.start(`Creating ui.config.json...`)
+      spinner.start("Creating ui.config.json...")
 
       const targetPath = path.resolve(cwd, "ui.config.json")
       await writeFile(targetPath, JSON.stringify(rawConfig, null, 2), "utf-8")
 
-      spinner.stop(`ui.config.json created.`)
+      spinner.stop("ui.config.json created.")
 
       const config = await resolveConfigPaths(cwd, rawConfig)
 
-      spinner.start(`Initializing project...`)
+      spinner.start("Initializing project...")
 
       // make sure all the directories exist
       for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
+        if (!resolvedPath) continue
+
         let dirname = path.extname(resolvedPath) ? path.dirname(resolvedPath) : resolvedPath
 
         if (key === "utils" && resolvedPath.endsWith("/utils")) {
@@ -78,13 +79,12 @@ export const init = new Command()
 
       const extension = config.tsx ? "ts" : "js"
 
-      await writeFile(
-        config.resolvedPaths.tailwindConfig,
-        templates.TAILWIND_CONFIG.replace("<%- prefix %>", config.tailwind.prefix),
-        "utf-8"
+      const tailwindCssContent = templates.TAILWIND_CSS.replace(
+        "<%- prefix %>",
+        config.tailwind.prefix ? ` prefix(${config.tailwind.prefix})` : ""
       )
 
-      await writeFile(config.resolvedPaths.tailwindCss, templates.TAILWIND_CSS, "utf-8")
+      await writeFile(config.resolvedPaths.tailwindCss, tailwindCssContent, "utf-8")
 
       await writeFile(
         `${config.resolvedPaths.utils}.${extension}`,
@@ -92,18 +92,18 @@ export const init = new Command()
         "utf-8"
       )
 
-      spinner.stop(`Project initialized.`)
+      spinner.stop("Project initialized.")
 
-      spinner.start(`Installing dependencies...`)
+      spinner.start("Installing dependencies...")
 
       const packageManager = await getPackageManager(cwd)
-      await execa(packageManager, [
-        "add",
-        packageManager === "deno" ? "--npm" : "",
-        ...PROJECT_DEPENDENCIES,
-      ], { cwd });
+      const args = ["add", ...PROJECT_DEPENDENCIES]
+      if (packageManager === "deno") {
+        args.splice(1, 0, "--npm")
+      }
+      await execa(packageManager, args, { cwd })
 
-      spinner.stop(`Dependencies installed.`)
+      spinner.stop("Dependencies installed.")
 
       p.outro(
         `${highlight("Success!")} Project initialization completed. You may now add components.`
@@ -126,14 +126,10 @@ async function promptForConfig(): Promise<RawConfig> {
           message: `Where is your ${highlight("global CSS")} file? ${subtle("(this file will be overwritten)")}`,
           initialValue: DEFAULT_CSS_FILE
         }),
-      tailwindConfig: () =>
-        p.text({
-          message: `Where is your ${highlight("Tailwind config")} located? ${subtle("(this file will be overwritten)")}`,
-          initialValue: DEFAULT_TAILWIND_CONFIG
-        }),
       tailwindPrefix: () =>
         p.text({
           message: `Are you using a custom ${highlight("tailwind prefix eg. tw-")}? (Leave blank if not)`,
+          placeholder: "",
           initialValue: DEFAULT_TAILWIND_PREFIX
         }),
       components: () =>
@@ -160,7 +156,6 @@ async function promptForConfig(): Promise<RawConfig> {
     tsx: options.typescript,
     tailwind: {
       css: options.cssFile,
-      config: options.tailwindConfig,
       prefix: options.tailwindPrefix
     },
     aliases: {

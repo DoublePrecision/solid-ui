@@ -9,7 +9,6 @@ import { resolveImport } from "~/utils/resolve-import"
 export const DEFAULT_COMPONENTS = "~/components/ui"
 export const DEFAULT_UTILS = "~/lib/utils"
 export const DEFAULT_CSS_FILE = "src/app.css"
-export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.cjs"
 export const DEFAULT_TAILWIND_PREFIX = ""
 
 export const RawConfigSchema = v.object({
@@ -17,7 +16,7 @@ export const RawConfigSchema = v.object({
   tsx: v.boolean(),
   tailwind: v.object({
     css: v.string(),
-    config: v.string(),
+    config: v.optional(v.string()),
     prefix: v.optional(v.string(), "")
   }),
   aliases: v.object({
@@ -31,7 +30,7 @@ export type RawConfig = v.InferOutput<typeof RawConfigSchema>
 export const ConfigSchema = v.object({
   ...RawConfigSchema.entries,
   resolvedPaths: v.object({
-    tailwindConfig: v.string(),
+    tailwindConfig: v.optional(v.string()),
     tailwindCss: v.string(),
     utils: v.string(),
     components: v.string()
@@ -52,7 +51,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   return v.parse(ConfigSchema, {
     ...config,
     resolvedPaths: {
-      tailwindConfig: path.resolve(cwd, config.tailwind.config),
+      tailwindConfig: config.tailwind.config
+        ? path.resolve(cwd, config.tailwind.config)
+        : undefined,
       tailwindCss: path.resolve(cwd, config.tailwind.css),
       utils: await resolveImport(config.aliases.utils, tsConfig),
       components: await resolveImport(config.aliases.components, tsConfig)
