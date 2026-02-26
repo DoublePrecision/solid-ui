@@ -15,7 +15,7 @@ const { default: mdx } = pkg
 export default defineConfig({
   ssr: true,
   server: {
-    preset: "github-pages"
+    preset: "cloudflare-pages"
   },
   extensions: ["mdx", "md"],
   vite: {

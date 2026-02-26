@@ -7,7 +7,7 @@
 Start by creating a new Astro project:
 
 ```bash
-npm create astro@latest
+bun create astro@latest
 ```
 
 ### Configure your Astro project
@@ -26,7 +26,7 @@ You will be asked a few questions to configure your project:
 Install Solid using the Astro CLI:
 
 ```bash
-npx astro add solid
+bunx astro add solid
 ```
 
 <Callout class="mt-4">
@@ -40,7 +40,7 @@ Answer `Yes` to all the question prompted by the CLI when installing Solid.
 Install Tailwind CSS using the Astro CLI:
 
 ```bash
-npx astro add tailwind
+bunx astro add tailwind
 ```
 
 <Callout class="mt-4">
@@ -73,7 +73,7 @@ Add the following code to the `tsconfig.json` file to resolve paths:
 Run the `solidui-cli` init command to setup your project:
 
 ```bash
-npx solidui-cli@latest init
+bunx @doubleprecision/solidui-cli@latest init
 ```
 
 ### Configure ui.config.json
@@ -113,7 +113,7 @@ export default defineConfig({
 
 ### Update tailwind.config.mjs
 
-When running `npx solidui-cli@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
+When running `bunx @doubleprecision/solidui-cli@latest init`, your tailwind config for content will be overwritten. To fix this, change the `module.exports` to `export default` and the `content` section with the code below to your `tailwind.config.mjs` file:
 
 ```js {2}
 export default {
@@ -126,7 +126,7 @@ export default {
 You can now start adding components to your project.
 
 ```bash
-npx solidui-cli@latest add button
+bunx @doubleprecision/solidui-cli@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
